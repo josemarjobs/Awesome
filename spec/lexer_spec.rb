@@ -58,4 +58,14 @@ CODE
 			[")", ")"], 
 		].should == Lexer.new.tokenize('print("josemar")')
 	end	
+	it "should parse while correctly" do
+		[ 
+			[:WHILE, "while"],
+			["(", "("],
+			[:IDENTIFIER, "i"],
+			["<", "<"],
+			[:NUMBER, 10],
+			[")", ")"]
+		].should == Lexer.new.tokenize('while( i < 10)')
+	end	
 end
