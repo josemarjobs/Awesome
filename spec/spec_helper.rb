@@ -1,3 +1,1 @@
-require_relative("../lib/lexer.rb")
-require_relative("../lib/nodes.rb")
-require_relative("../lib/parser.rb")
+$:.unshift File.expand_path("../../lib/", __FILE__)
