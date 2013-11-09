@@ -46,8 +46,6 @@ class ClassNode < Struct.new(:name, :body); end
 # control structures, the body is a tree of nodes
 class IfNode < Struct.new(:condition, :body); end
 class WhileNode < Struct.new(:condition, :body); end
-class LoopNode < Struct.new(:condition, :body); end
-class ForNode < Struct.new(:condition, :body); end
 
 
 

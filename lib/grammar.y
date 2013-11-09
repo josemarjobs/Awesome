@@ -10,6 +10,7 @@ token TRUE FALSE NIL
 token IDENTIFIER
 token CONSTANT
 token INDENT DEDENT
+token WHILE
 
 prechigh
 	left '.'
@@ -47,6 +48,7 @@ rule
 		|	Def
 		|	Class
 		| If
+		| While
 		| '(' Expression ')'		{result = val[1]}
 		;
 
@@ -92,6 +94,7 @@ rule
 	| Expression '-' 	Expression 	{result=CallNode.new(val[0], val[1], val[2])}
 	| Expression '*' 	Expression 	{result=CallNode.new(val[0], val[1], val[2])}
 	| Expression '/' 	Expression 	{result=CallNode.new(val[0], val[1], val[2])}
+	| '!' Expression              {result = CallNode.new(val[1], val[0], [])}
 	;
 
 	GetConstant:
@@ -132,6 +135,10 @@ rule
 	If:
 		IF Expression Block			{result = IfNode.new(val[1], val[2])}
 		;
+
+	While:
+		WHILE Expression Block  {result = WhileNode.new(val[1], val[2])}
+	;
 end
 
 
